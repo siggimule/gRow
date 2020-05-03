@@ -4,7 +4,8 @@
   "description": "waterrower API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "testx": "echo \"Error: no test specified\" && exit 1",
+    "test": "nodemon growserver.js simulation -f logs/1586675408917-raw.log -i 500"
   },
   "author": "siggi",
   "license": "ISC",

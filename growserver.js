@@ -24,8 +24,8 @@ const argv = com.argv;
 //Web Server stuff
 app.use(express.static('public'));
 
-app.listen(8081, function () {
-  console.log('Example app listening on port 8081!');
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
 });
 
 app.get('/',function (req, res) {
