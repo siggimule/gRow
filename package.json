@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "testx": "echo \"Error: no test specified\" && exit 1",
-    "test": "nodemon growserver.js simulation -f logs/1586675408917-raw.log -i 500"
+    "test": "nodemon growserver.js simulation -f logs/1586675408917-raw.log -i 500",
+    "start":"node growserver.js live"
   },
   "author": "siggi",
   "license": "ISC",

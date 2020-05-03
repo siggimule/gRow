@@ -68,7 +68,7 @@ let myStream = new stream.stream();
 
 if (argv._.includes('simulation')) {
   console.log("Simulation mode...");
-    //argv.file ;
+  console.log(argv.file);
 
   var reader = fs.createReadStream (argv.file,{fd:null,encoding:'latin1'});
   reader.on ('readable', getbyte);
