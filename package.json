@@ -1,0 +1,17 @@
+{
+  "name": "grow",
+  "version": "1.0.0",
+  "description": "waterrower API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "siggi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "serialport": "^8.0.7",
+    "sqlite3": "^4.2.0",
+    "yargs": "^15.3.1"
+  }
+}

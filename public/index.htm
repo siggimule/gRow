@@ -1,0 +1,123 @@
+<html>
+   <head>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900|Work+Sans:300" rel="stylesheet">
+      
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script>
+
+      "use strict"
+      
+        /*$(document).ready(function(){
+            setInterval(function(){$("#screen").load('http://raspberrypi:8081/value')}, 2000);
+
+
+        });
+                    */
+        var myVar = setInterval(myTimer, 1000);
+
+        function myTimer() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+           // document.getElementById("screen").innerHTML = t;
+
+            loadValue();
+        }      
+        
+        function loadValue(){
+            $.get("http://raspberrypi:8081/value", function(data, status){
+                 var myObj = data;
+                 var x = myObj.timestamp - myObj.sessionStartDate
+                 var d = new Date(myObj.sessionStartDate);
+                 //var d = new Date(myObj.timestamp);
+                 document.getElementById("sessionElapsedTime").innerHTML = format_sec(myObj.sessionElapsedTime / 1000)
+                 document.getElementById("totalDistance").innerHTML = (JSON.stringify(myObj.totalDistance) / 10 )+  " meter"
+                 document.getElementById("spm").innerHTML = JSON.stringify(myObj.currentStrokerate) + " spm"
+                 document.getElementById("totalStrokes").innerHTML = JSON.stringify(myObj.totalStrokes) + " strokes"
+                 document.getElementById("splitTime").innerHTML = format_sec (5000 / JSON.stringify(myObj.currentSpeed)) + " split"
+                 document.getElementById("sessionStartTime").innerHTML = String(d.getHours())  + ":"  + String(d.getMinutes())  + ":" + String(d.getSeconds())
+                 myMove(myObj.totalDistance / 50)   
+                
+             });
+           
+        }
+
+            function  format_sec(seconds) {
+
+            var measuredTime = new Date(null)
+            measuredTime.setSeconds(parseInt(seconds)) // specify value of SECONDS
+            var MHSTime = measuredTime.toISOString().substr(11, 8)
+            return MHSTime
+            }
+
+            function myMove(meter) {
+                var elem = document.getElementById("animate")  
+                elem.style.left = meter + "px"; 
+            }
+
+            function openNav() {
+               document.getElementById("mySidenav").style.width = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+
+            function saveSession(){
+                $.get("http://raspberrypi:8081/save", function(data, status){
+                   
+             });
+            }
+
+    </script>
+    <link rel="stylesheet" type="text/css" href="mystyle2.css">  
+
+
+   </head>
+
+    <body>
+
+        <div class="topnav">
+            <h1 class=multicolor>gROW!</h1>
+          </div>
+
+
+<!-- Side navigation -->
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">Monitor</a>
+    <a href="#">Dashboard</a>
+    <a href="#">Admin</a>
+    <a href="#">Console</a>
+  </div>
+
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+  
+    <div class="cards">
+        <div class="card", id="sessionElapsedTime">ROW!</div>
+        <div class="card", id="splitTime">ROW!</div>
+        <div class="card", id="spm">ROW!</div>
+        <div class="card", id="totalDistance">ROW!</div>
+        <div class="card", id="totalStrokes">ROW!</div>
+        <div class="card", id="sessionStartTime">ROW!</div>              
+     </div>  
+
+     
+    <div class="card2", id="race">
+        <div id ="animate"></div>
+    </div>
+  
+
+    
+
+
+   
+   <div class="footer">
+    <p><button onclick="saveSession()">Save Session</button></p> 
+    <h6 style="text-align: center;" > version 0.1 </h6>
+  </div>    
+
+</body>
+
+</html>
