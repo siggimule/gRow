@@ -11,7 +11,7 @@
   "author": "siggi",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "serialport": "^8.0.7",
     "sqlite3": "^4.2.0",
     "yargs": "^15.3.1"
